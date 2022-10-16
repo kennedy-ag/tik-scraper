@@ -1,4 +1,8 @@
 from funcoes import *
+from datetime import datetime
+
+inicial = datetime.now()
+print(inicial.strftime("%H:%M:%S"))
 
 username = "arianagrande"
 video_id = 1
@@ -11,3 +15,7 @@ if len(lista_de_videos)>=30:
         video_id += 1
 
 close_driver()
+
+final = datetime.now()
+print(final.strftime("%H:%M:%S"))
+print(f"Tempo despendido: {final-inicial}")

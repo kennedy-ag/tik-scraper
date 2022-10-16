@@ -4,9 +4,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 import time
+from constants import *
 
-VERIFY_FP="verify_l9abf09s_oAVqh1J1_Dtct_4pyU_950V_3Zq1M3iSAgwY"
-X_PATH = f"/html/body/div[2]/div[2]/div[2]/div/div[2]/div[2]/div/div/div[1]/div/div/a"
 options = Options()
 options.headless = True
 options.add_experimental_option("excludeSwitches", ["enable-logging"])
@@ -58,9 +57,6 @@ def get_comments(username: str, url: str, video_id: int):
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
     time.sleep(3)
     comentarios = [e.text for e in driver.find_elements(By.CLASS_NAME, "e1g2efjf6")]
-
-    if len(comentarios) <=20:
-        comentarios.extend(comentarios[0:15])
 
     for i in range(len(comentarios[0:40])):
         arq = open(f"./arquivos/{username}/comentarios/{username}__{video_id}__{i+1}.txt", 'w', encoding='utf8')
